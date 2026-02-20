@@ -2,18 +2,20 @@
 
 ## 🎓 Material de Aprendizaje
 
-- Libros: https://drive.google.com/drive/folders/1dxKJn1dx25zsA8Hh37SBPzJC5KnziEsS?usp=drive_link
+- Libros: [https://drive.google.com/drive/folders/1dxKJn1dx25zsA8Hh37SBPzJC5KnziEsS?usp=drive_link](https://drive.google.com/drive/folders/1dxKJn1dx25zsA8Hh37SBPzJC5KnziEsS?usp=drive_link)
 - USACO Guide: https://usaco.guide/
 - CP-Algorithms: https://cp-algorithms.com/
 - Cursos omegaUp: https://omegaup.com/course/
 - VisuAlgo: https://visualgo.net/en
 - algo.dev: https://www.alg0.dev/es/
 - Repovive roadmaps: https://repovive.com/roadmaps
-- Repovive TV: https://youtube.com/@repovive
-- Errichto Algorithms: https://www.youtube.com/@Errichto
-- TLE Eliminators - by Priyansh: https://www.youtube.com/@TLE_Eliminators
-- NeetCode: https://www.youtube.com/@NeetCode
+- Repovive TV - YouTube: https://youtube.com/@repovive
+- Errichto Algorithms - YouTube: https://www.youtube.com/@Errichto
+- TLE Eliminators - by Priyansh - YouTube: https://www.youtube.com/@TLE_Eliminators
+- NeetCode - YouTube: https://www.youtube.com/@NeetCode
 - Repositorio de racsosabe: https://github.com/racsosabe/Miscelanea/tree/master/UPC
+- elsantodel90 - YouTube: https://www.youtube.com/@agustin.elsantodel90
+- MIT Informatics Tournament - YouTube: https://www.youtube.com/@MITInfoTourney
 
 ## 🔧 Herramientas Adicionales
 - CF Analytics: https://github.com/ApoorvaRajBhadani/cf-analytics
@@ -36,11 +38,11 @@
 
 ## 🏅 Sets de Entrenamiento
 - CP-31 Sheet: https://www.tle-eliminators.com/cp-sheet
-- Boot camp for Beginners | AtCoder Problems: https://kenkoooo.com/atcoder/#/training
-- \[GYM\] 100 Easy Problems (Bootcamp) by Errichto | Codeforces: https://codeforces.com/blog/entry/97058
-- Online Coding Practice Problems & Challenges | CodeChef: https://www.codechef.com/practice#programming-languages
-- Topic Streams Contests by Shayan | Codeforces: https://codeforces.com/group/yeVhAfeK6s/contests
-- Lista de problemas | Olimpiada Mexicana de Informática (problemas en español): https://www.olimpiadadeinformatica.org.mx/Resultados/Problemas
+- Boot camp for Beginners - AtCoder Problems: https://kenkoooo.com/atcoder/#/training
+- \[GYM\] 100 Easy Problems (Bootcamp) by Errichto - Codeforces: https://codeforces.com/blog/entry/97058
+- Online Coding Practice Problems & Challenges - CodeChef: https://www.codechef.com/practice#programming-languages
+- Topic Streams Contests by Shayan - Codeforces: https://codeforces.com/group/yeVhAfeK6s/contests
+- Lista de problemas - Olimpiada Mexicana de Informática (problemas en español): https://www.olimpiadadeinformatica.org.mx/Resultados/Problemas
 
 ## 🧑‍💻 Editores y Compiladores en Línea
 - USACO IDE: https://ide.usaco.guide/
