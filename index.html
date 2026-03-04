@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recursos CP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --base:      #1e1e2e;
+      --mantle:    #181825;
+      --crust:     #11111b;
+      --surface0:  #313244;
+      --surface1:  #45475a;
+      --surface2:  #585b70;
+      --overlay0:  #6c7086;
+      --overlay1:  #7f849c;
+      --subtext0:  #a6adc8;
+      --subtext1:  #bac2de;
+      --text:      #cdd6f4;
+      --lavender:  #b4befe;
+      --blue:      #89b4fa;
+      --sapphire:  #74c7ec;
+      --teal:      #94e2d5;
+      --green:     #a6e3a1;
+      --yellow:    #f9e2af;
+      --peach:     #fab387;
+      --red:       #f38ba8;
+      --mauve:     #cba6f7;
+      --pink:      #f5c2e7;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--base);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(24,24,37,0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--surface0);
+    }
+    .header-inner {
+      max-width: 1160px; margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex; align-items: center; gap: 1.2rem;
+      height: 60px;
+    }
+    .logo {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800; font-size: 1.05rem;
+      color: var(--mauve); letter-spacing: -0.3px;
+      white-space: nowrap; flex-shrink: 0;
+      display: flex; align-items: center; gap: 0.45rem;
+      text-decoration: none;
+    }
+    nav { display: flex; gap: 0.25rem; flex-wrap: wrap; align-items: center; }
+    .nav-btn {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem; font-weight: 500;
+      padding: 0.38rem 0.85rem;
+      border-radius: 8px; border: 1px solid transparent;
+      background: transparent; color: var(--subtext1);
+      cursor: pointer; transition: all 0.18s; white-space: nowrap;
+    }
+    .nav-btn:hover  { background: var(--surface0); color: var(--text); }
+    .nav-btn.active { background: var(--mauve); color: var(--crust); font-weight: 600; }
+
+    /* Main */
+    main {
+      max-width: 1160px; margin: 0 auto;
+      padding: 2.8rem 1.5rem 5rem;
+      position: relative; z-index: 1;
+    }
+    .page { display: none; animation: fadeIn 0.3s ease; }
+    .page.active { display: block; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Section headings */
+    .section-header { margin-bottom: 2.2rem; }
+    .section-tag {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--mauve); margin-bottom: 0.45rem;
+    }
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.2rem; font-weight: 800;
+      color: var(--text); line-height: 1.1; letter-spacing: -1px;
+    }
+    .section-subtitle {
+      margin-top: 0.55rem; color: var(--subtext0);
+      font-size: 0.92rem; max-width: 620px; line-height: 1.65;
+    }
+
+    /* Hero */
+    .hero { padding: 1.5rem 0 2.5rem; }
+    .hero h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.3rem, 5.5vw, 3.8rem);
+      font-weight: 800; letter-spacing: -2px;
+      line-height: 1.07; color: var(--text); margin-bottom: 1.1rem;
+    }
+    .hero h1 .a1 { color: var(--mauve); }
+    .hero h1 .a2 { color: var(--blue); }
+    .hero-desc {
+      font-size: 1rem; color: var(--subtext0);
+      max-width: 560px; line-height: 1.75; margin-bottom: 2rem;
+    }
+    .hero-ctas { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .btn-primary {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.88rem; font-weight: 600;
+      padding: 0.65rem 1.4rem; border-radius: 10px;
+      border: none; background: var(--mauve); color: var(--crust);
+      cursor: pointer; transition: all 0.18s;
+    }
+    .btn-primary:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .btn-secondary {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.88rem; font-weight: 600;
+      padding: 0.65rem 1.4rem; border-radius: 10px;
+      border: 1px solid var(--surface1); background: transparent;
+      color: var(--text); cursor: pointer; transition: all 0.18s;
+    }
+    .btn-secondary:hover { background: var(--surface0); }
+
+    /* Subsections */
+    .subsection { margin-bottom: 2.8rem; }
+    .subsection-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.05rem; font-weight: 700;
+      color: var(--lavender); margin-bottom: 1.1rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .subsection-title::after {
+      content: ''; flex: 1; height: 1px; background: var(--surface0);
+    }
+
+    /* Cards */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.1rem;
+    }
+    .card {
+      background: var(--mantle); border: 1px solid var(--surface0);
+      border-radius: 16px; padding: 1.4rem;
+      transition: all 0.22s; position: relative; overflow: hidden;
+    }
+    .card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: var(--al, var(--mauve));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.28s;
+    }
+    .card:hover { border-color: var(--surface1); transform: translateY(-3px); box-shadow: 0 10px 36px rgba(0,0,0,.28); }
+    .card:hover::before { transform: scaleX(1); }
+    .card-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; margin-bottom: 0.9rem;
+    }
+    .card-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.97rem; font-weight: 700;
+      color: var(--text); margin-bottom: 0.38rem;
+    }
+    .card-desc { font-size: 0.82rem; color: var(--subtext0); line-height: 1.62; }
+    .card-link {
+      display: inline-flex; align-items: center; gap: 0.25rem;
+      margin-top: 0.9rem; font-size: 0.79rem; font-weight: 600;
+      color: var(--blue); text-decoration: none; transition: color 0.18s;
+    }
+    .card-link:hover { color: var(--lavender); }
+    .badge-pop {
+      display: inline-block; font-size: 0.66rem; font-weight: 700;
+      padding: 0.15rem 0.5rem; border-radius: 100px; margin-left: 0.35rem;
+      vertical-align: middle;
+      background: rgba(250,179,135,.15); color: var(--peach);
+      border: 1px solid rgba(250,179,135,.28);
+    }
+    .lang-tag {
+      font-size: 0.73rem; font-weight: 600;
+    }
+
+    /* Drive banner */
+    .drive-banner {
+      display: flex; align-items: center; gap: 1rem;
+      background: rgba(203,166,247,.07);
+      border: 1px solid rgba(203,166,247,.2);
+      border-radius: 14px; padding: 1.1rem 1.4rem;
+      margin-top: 1rem; text-decoration: none; transition: all 0.2s;
+    }
+    .drive-banner:hover { border-color: rgba(203,166,247,.45); background: rgba(203,166,247,.11); }
+    .drive-banner-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .drive-banner-text strong {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.95rem; font-weight: 700; color: var(--mauve);
+      display: block; margin-bottom: 0.2rem;
+    }
+    .drive-banner-text span { font-size: 0.8rem; color: var(--subtext0); }
+
+    /* Platform cards */
+    .platforms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(430px, 1fr));
+      gap: 1.1rem;
+    }
+    .platform-card {
+      background: var(--mantle); border: 1px solid var(--surface0);
+      border-radius: 18px; padding: 1.5rem;
+      transition: all 0.22s; display: flex; gap: 1.2rem;
+    }
+    .platform-card:hover { border-color: var(--surface1); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,.24); }
+    .plat-logo {
+      width: 48px; height: 48px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; overflow: hidden;
+      font-size: 0.85rem; font-weight: 800;
+    }
+    .plat-logo img { width: 80%; height: 80%; object-fit: contain; }
+    .plat-body { flex: 1; min-width: 0; }
+    .plat-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem; font-weight: 700; color: var(--text);
+      margin-bottom: 0.35rem; display: flex; align-items: center;
+      gap: 0.4rem; flex-wrap: wrap;
+    }
+    .plat-desc { font-size: 0.81rem; color: var(--subtext0); line-height: 1.58; margin-bottom: 0.75rem; }
+    .plat-link { font-size: 0.78rem; font-weight: 600; color: var(--blue); text-decoration: none; }
+    .plat-link:hover { color: var(--lavender); }
+    .pills { display: flex; flex-wrap: wrap; gap: 0.25rem; margin-bottom: 0.6rem; }
+    .pill {
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      font-size: 0.72rem; font-weight: 600;
+      padding: 0.22rem 0.65rem; border-radius: 100px;
+    }
+    .p-blue   { background: rgba(137,180,250,.1); border: 1px solid rgba(137,180,250,.22); color: var(--blue); }
+    .p-green  { background: rgba(166,227,161,.1); border: 1px solid rgba(166,227,161,.22); color: var(--green); }
+    .p-mauve  { background: rgba(203,166,247,.1); border: 1px solid rgba(203,166,247,.22); color: var(--mauve); }
+    .p-peach  { background: rgba(250,179,135,.1); border: 1px solid rgba(250,179,135,.22); color: var(--peach); }
+    .p-teal   { background: rgba(148,226,213,.1); border: 1px solid rgba(148,226,213,.22); color: var(--teal); }
+    .p-yellow { background: rgba(249,226,175,.1); border: 1px solid rgba(249,226,175,.22); color: var(--yellow); }
+    .p-neutral{ background: rgba(100,100,140,.12); border: 1px solid rgba(150,150,200,.18); color: var(--subtext1); }
+
+    /* Tool/Set cards */
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+    .tool-card {
+      background: var(--mantle); border: 1px solid var(--surface0);
+      border-radius: 14px; padding: 1.2rem 1.3rem;
+      transition: all 0.2s;
+      display: flex; flex-direction: column; gap: 0.4rem;
+    }
+    .tool-card:hover { border-color: var(--surface1); background: var(--surface0); transform: translateY(-2px); }
+    .tc-icon { font-size: 1.4rem; }
+    .tc-title { font-family: 'Outfit', sans-serif; font-size: 0.92rem; font-weight: 700; color: var(--text); }
+    .tc-desc  { font-size: 0.8rem; color: var(--subtext0); line-height: 1.55; flex: 1; }
+    .tc-link  { font-size: 0.77rem; font-weight: 600; color: var(--blue); text-decoration: none; margin-top: 0.3rem; }
+    .tc-link:hover { color: var(--lavender); }
+
+    /* Info box */
+    .info-box {
+      background: rgba(137,180,250,.07);
+      border: 1px solid rgba(137,180,250,.2);
+      border-radius: 13px; padding: 0.95rem 1.3rem;
+      font-size: 0.83rem; color: var(--subtext1); line-height: 1.65;
+      margin-bottom: 1.8rem; display: flex; gap: 0.6rem; align-items: flex-start;
+    }
+
+    /* colour helpers */
+    .al-mauve   { --al: var(--mauve);   }
+    .al-blue    { --al: var(--blue);    }
+    .al-green   { --al: var(--green);   }
+    .al-peach   { --al: var(--peach);   }
+    .al-teal    { --al: var(--teal);    }
+    .al-yellow  { --al: var(--yellow);  }
+    .al-sapphr  { --al: var(--sapphire);}
+    .al-red     { --al: var(--red);     }
+    .al-lavend  { --al: var(--lavender);}
+
+    .i-mauve  { background: rgba(203,166,247,.13); }
+    .i-blue   { background: rgba(137,180,250,.13); }
+    .i-green  { background: rgba(166,227,161,.13); }
+    .i-peach  { background: rgba(250,179,135,.13); }
+    .i-teal   { background: rgba(148,226,213,.13); }
+    .i-yellow { background: rgba(249,226,175,.13); }
+    .i-sapphr { background: rgba(116,199,236,.13); }
+    .i-red    { background: rgba(243,139,168,.13); }
+    .i-lavend { background: rgba(180,190,254,.13); }
+
+    .c-mauve  { color: var(--mauve);   }
+    .c-blue   { color: var(--blue);    }
+    .c-green  { color: var(--green);   }
+    .c-peach  { color: var(--peach);   }
+    .c-teal   { color: var(--teal);    }
+    .c-sapphr { color: var(--sapphire);}
+
+    footer {
+      text-align: center; padding: 1.4rem;
+      font-size: 0.76rem; color: var(--overlay0);
+      border-top: 1px solid var(--surface0);
+      position: relative; z-index: 1;
+    }
+    footer span { color: var(--mauve); }
+
+    @media (max-width: 720px) {
+      .platforms-grid { grid-template-columns: 1fr; }
+      .platform-card  { flex-direction: column; gap: 0.9rem; }
+      .header-inner   { flex-direction: column; height: auto; padding: 0.75rem 1rem; gap: 0.5rem; }
+      nav             { justify-content: center; }
+      .section-title  { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="logo" href="#" onclick="showPage('inicio')">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+              stroke="#cba6f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Recursos CP
+    </a>
+    <nav>
+      <button class="nav-btn active" onclick="showPage('inicio')">Inicio</button>
+      <button class="nav-btn" onclick="showPage('material')">Material</button>
+      <button class="nav-btn" onclick="showPage('plataformas')">Plataformas</button>
+      <button class="nav-btn" onclick="showPage('sets')">Sets de Entrenamiento</button>
+      <button class="nav-btn" onclick="showPage('herramientas')">Herramientas</button>
+      <button class="nav-btn" onclick="showPage('editores')">Editores</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- INICIO -->
+  <div id="inicio" class="page active">
+    <div class="hero">
+      <h1>
+        <span class="a1">Programación</span><br>
+        <span class="a2">Competitiva</span><br>
+        — Recursos
+      </h1>
+      <p class="hero-desc">
+        Este es un espacio para juntar material útil sobre programación competitiva.
+        La idea es simple: compartir lo que vamos encontrando para poder crecer juntos.
+        No hay ninguna fórmula secreta aquí — solo recursos que a mí (y ojalá a ti también) les han servido. ¡Espero que te sea útil!
+      </p>
+      <div class="hero-ctas">
+        <button class="btn-primary"   onclick="showPage('material')">Ver material →</button>
+        <button class="btn-secondary" onclick="showPage('plataformas')">Plataformas</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MATERIAL DE APRENDIZAJE -->
+  <div id="material" class="page">
+    <div class="section-header">
+      <div class="section-tag">Estudio</div>
+      <h2 class="section-title">Material de Aprendizaje</h2>
+      <p class="section-subtitle">Libros, cursos, canales y otros recursos para aprender a tu propio ritmo.</p>
+    </div>
+
+    <!-- Libros -->
+    <div class="subsection">
+      <div class="subsection-title">📚 Libros</div>
+      <div class="cards-grid">
+
+        <div class="card al-peach">
+          <div class="card-icon i-peach">📘</div>
+          <div class="card-title">Competitive Programming 4 <span class="badge-pop">⭐ Muy popular</span></div>
+          <div class="card-desc">
+            De Steven Halim y Felix Halim. <strong style="color:var(--peach)">El libro de referencia por excelencia en CP</strong> — cubre estructuras de datos, grafos, matemáticas y geometría computacional con miles de problemas clasificados. Si vas a tener un solo libro, que sea este.
+          </div>
+        </div>
+
+        <div class="card al-mauve">
+          <div class="card-icon i-mauve">📗</div>
+          <div class="card-title">Competitive Programmer's Handbook <span class="badge-pop">⭐ Muy popular</span></div>
+          <div class="card-desc">
+            También conocido como <em>Guide to Competitive Programming</em>, de Antti Laaksonen. <strong style="color:var(--mauve)">La intro más recomendada para empezar</strong>: gratuita, bien organizada y cubre todos los fundamentos en ~300 páginas.
+          </div>
+          <a class="card-link" href="https://cses.fi/book/book.pdf" target="_blank">Descargar PDF ↗</a>
+        </div>
+
+        <div class="card al-blue">
+          <div class="card-icon i-blue">📙</div>
+          <div class="card-title">Introduction to Algorithms (CLRS)</div>
+          <div class="card-desc">
+            El clásico académico de algoritmos. Va más al fondo de la teoría con demostraciones formales. No es el más rápido para aprender CP, pero si quieres entender <em>por qué</em> funcionan los algoritmos, es el libro para eso.
+          </div>
+        </div>
+
+        <div class="card al-teal">
+          <div class="card-icon i-teal">📕</div>
+          <div class="card-title">The Art of Problem Solving (AoPS)</div>
+          <div class="card-desc">
+            Serie de libros orientada a matemáticas olímpicas. Muy útil para reforzar combinatoria, teoría de números y álgebra — áreas que aparecen constantemente en problemas de nivel medio-alto en ICPC e IOI.
+          </div>
+        </div>
+
+      </div>
+
+      <a class="drive-banner" href="https://drive.google.com/drive/folders/1dxKJn1dx25zsA8Hh37SBPzJC5KnziEsS?usp=drive_link" target="_blank">
+        <div class="drive-banner-icon">📁</div>
+        <div class="drive-banner-text">
+          <strong>Más libros en Google Drive</strong>
+          <span>¿Quieres más opciones? En esta carpeta vas a encontrar una colección con más libros de CP y matemáticas.</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Cursos -->
+    <div class="subsection">
+      <div class="subsection-title">🎓 Cursos y Guías en Línea</div>
+      <div class="cards-grid">
+
+        <div class="card al-mauve">
+          <div class="card-icon i-mauve">🏫</div>
+          <div class="card-title">USACO Guide</div>
+          <div class="card-desc">Guía estructurada por niveles (Bronze → Silver → Gold → Platinum). Pensada para el concurso USACO pero útil para cualquiera. Incluye teoría, problemas y soluciones explicadas. De lo más completo que hay gratis.</div>
+          <a class="card-link" href="https://usaco.guide/" target="_blank">usaco.guide ↗</a>
+        </div>
+
+        <div class="card al-blue">
+          <div class="card-icon i-blue">📐</div>
+          <div class="card-title">CP-Algorithms</div>
+          <div class="card-desc">Traducción del famoso e-maxx ruso. Artículos detallados de cientos de algoritmos, desde búsqueda binaria hasta FFT y flujo máximo. Ideal para consultar cuando llegas a un tema nuevo o quieres profundizar en algo.</div>
+          <a class="card-link" href="https://cp-algorithms.com/" target="_blank">cp-algorithms.com ↗</a>
+        </div>
+
+        <div class="card al-blue">
+          <div class="card-icon i-blue">🎯</div>
+          <div class="card-title">Codeforces EDU</div>
+          <div class="card-desc">Cursos interactivos de Codeforces sobre estructuras de datos: Segment Trees, Fenwick, suffix arrays y más. Puedes enviar ejercicios directamente en la plataforma para practicar de inmediato.</div>
+          <a class="card-link" href="https://codeforces.com/edu/courses" target="_blank">codeforces.com/edu ↗</a>
+        </div>
+
+        <div class="card al-green">
+          <div class="card-icon i-green">🌿</div>
+          <div class="card-title">Cursos omegaUp <span class="lang-tag c-green">(en español)</span></div>
+          <div class="card-desc">Cursos en español dentro de la plataforma omegaUp. Van desde lo más básico hasta temas intermedios, pensados especialmente para el contexto latinoamericano. Muy accesibles si estás empezando.</div>
+          <a class="card-link" href="https://omegaup.com/course/" target="_blank">omegaup.com/course ↗</a>
+        </div>
+
+        <div class="card al-peach">
+          <div class="card-icon i-peach">🗺️</div>
+          <div class="card-title">Repovive Roadmaps</div>
+          <div class="card-desc">Mapas de ruta para aprender programación competitiva de forma estructurada. Te ayudan a saber por dónde empezar y qué estudiar a continuación, sin perderte entre tantos recursos.</div>
+          <a class="card-link" href="https://repovive.com/roadmaps" target="_blank">repovive.com/roadmaps ↗</a>
+        </div>
+
+        <div class="card al-teal">
+          <div class="card-icon i-teal">📦</div>
+          <div class="card-title">Repositorio de racsosabe <span class="lang-tag c-teal">(en español)</span></div>
+          <div class="card-desc">Repositorio en GitHub con material del equipo UPC: implementaciones, apuntes y problemas clasificados por tema en español. Muy práctico para complementar el estudio.</div>
+          <a class="card-link" href="https://github.com/racsosabe/Miscelanea/tree/master/UPC" target="_blank">Ver en GitHub ↗</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- YouTube -->
+    <div class="subsection">
+      <div class="subsection-title">▶️ Canales de YouTube</div>
+      <div class="cards-grid">
+
+        <div class="card al-red">
+          <div class="card-icon i-red">🎬</div>
+          <div class="card-title">Repovive TV <span class="lang-tag" style="color:var(--red)">(en español)</span></div>
+          <div class="card-desc">Canal en español sobre CP: tutoriales de algoritmos, resolución de problemas y contenido para la comunidad latina. Muy recomendado si prefieres aprender en tu idioma.</div>
+          <a class="card-link" href="https://youtube.com/@repovive" target="_blank">Ver canal ↗</a>
+        </div>
+
+        <div class="card al-red">
+          <div class="card-icon i-red">🎬</div>
+          <div class="card-title">Errichto Algorithms</div>
+          <div class="card-desc">Canal de Errichto (Grandmaster de Codeforces). Tutoriales avanzados, análisis de rondas y problemas difíciles explicados. Para cuando ya tienes algo de base y quieres subir de nivel.</div>
+          <a class="card-link" href="https://www.youtube.com/@Errichto" target="_blank">Ver canal ↗</a>
+        </div>
+
+        <div class="card al-red">
+          <div class="card-icon i-red">🎬</div>
+          <div class="card-title">TLE Eliminators — by Priyansh</div>
+          <div class="card-desc">Tutoriales, streams de práctica y recursos bien organizados. También tienen la famosa CP-31 Sheet para entrenamiento estructurado. Muy activos en la comunidad.</div>
+          <a class="card-link" href="https://www.youtube.com/@TLE_Eliminators" target="_blank">Ver canal ↗</a>
+        </div>
+
+        <div class="card al-red">
+          <div class="card-icon i-red">🎬</div>
+          <div class="card-title">NeetCode</div>
+          <div class="card-desc">Conocido por sus explicaciones clarísimas de problemas de LeetCode. Si estás aprendiendo algoritmos desde cero o preparándote para entrevistas técnicas, sus videos son de los más didácticos que vas a encontrar.</div>
+          <a class="card-link" href="https://www.youtube.com/@NeetCode" target="_blank">Ver canal ↗</a>
+        </div>
+
+        <div class="card al-red">
+          <div class="card-icon i-red">🎬</div>
+          <div class="card-title">elsantodel90 <span class="lang-tag" style="color:var(--red)">(en español)</span></div>
+          <div class="card-desc">Canal de Agustín De Luca, referencia en la comunidad hispana de CP. Explica algoritmos y problemas en español con mucho detalle y claridad. Ideal si buscas material en tu idioma.</div>
+          <a class="card-link" href="https://www.youtube.com/@agustin.elsantodel90" target="_blank">Ver canal ↗</a>
+        </div>
+
+        <div class="card al-red">
+          <div class="card-icon i-red">🎬</div>
+          <div class="card-title">MIT Informatics Tournament</div>
+          <div class="card-desc">Canal del torneo de informática del MIT con charlas y contenido educativo de alto nivel. Buena opción para explorar temas avanzados y ver cómo piensan los mejores programadores del mundo.</div>
+          <a class="card-link" href="https://www.youtube.com/@MITInfoTourney" target="_blank">Ver canal ↗</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Blogs -->
+    <div class="subsection">
+      <div class="subsection-title">✍️ Blogs y Wikis</div>
+      <div class="cards-grid">
+
+        <div class="card al-sapphr">
+          <div class="card-icon i-sapphr">📖</div>
+          <div class="card-title">OMI — Olimpiada Mexicana de Informática</div>
+          <div class="card-desc">Sitio oficial de la OMI con archivo de problemas de ediciones anteriores y material de preparación. Si estás en México y quieres competir a nivel olímpico, este es el punto de partida.</div>
+          <a class="card-link" href="https://www.olimpiadadeinformatica.org.mx/" target="_blank">olimpiadadeinformatica.org.mx ↗</a>
+        </div>
+
+        <div class="card al-sapphr">
+          <div class="card-icon i-sapphr">📖</div>
+          <div class="card-title">OIA Wiki <span class="lang-tag c-sapphr">(en español)</span></div>
+          <div class="card-desc">Wiki de la Olimpiada Iberoamericana de Informática. Artículos sobre algoritmos y estructuras de datos en español. Un recurso muy valioso para la comunidad latinoamericana de CP.</div>
+          <a class="card-link" href="https://wiki.oia.unsam.edu.ar/" target="_blank">wiki.oia.unsam.edu.ar ↗</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Otros recursos -->
+    <div class="subsection">
+      <div class="subsection-title">🧩 Otros recursos útiles</div>
+      <div class="cards-grid">
+
+        <div class="card al-yellow">
+          <div class="card-icon i-yellow">👁️</div>
+          <div class="card-title">VisuAlgo</div>
+          <div class="card-desc">Visualizador interactivo de algoritmos y estructuras de datos. Puedes ver paso a paso cómo funcionan ordenamientos, grafos, DP y más. Muy útil para entender cosas que en papel no terminan de hacer clic.</div>
+          <a class="card-link" href="https://visualgo.net/en" target="_blank">visualgo.net ↗</a>
+        </div>
+
+        <div class="card al-yellow">
+          <div class="card-icon i-yellow">⚡</div>
+          <div class="card-title">algo.dev</div>
+          <div class="card-desc">Plataforma interactiva para aprender y practicar algoritmos con ejercicios bien explicados en español. Interfaz limpia y contenido accesible para reforzar conceptos de forma práctica.</div>
+          <a class="card-link" href="https://www.alg0.dev/es/" target="_blank">alg0.dev ↗</a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PLATAFORMAS -->
+  <div id="plataformas" class="page">
+    <div class="section-header">
+      <div class="section-tag">Práctica</div>
+      <h2 class="section-title">Plataformas de Entrenamiento</h2>
+      <p class="section-subtitle">Jueces en línea para resolver problemas y participar en concursos. Horarios en hora CDMX (UTC−6).</p>
+    </div>
+
+    <div class="info-box">
+      <span style="font-size:1rem;margin-top:1px;flex-shrink:0">🕐</span>
+      <span>Todos los horarios están en <strong>hora CDMX (UTC−6)</strong>. En horario de verano pueden variar — siempre checa el sitio oficial antes de cada concurso.</span>
+    </div>
+
+    <div class="platforms-grid">
+
+      <!-- Codeforces -->
+      <div class="platform-card">
+        <div class="plat-logo i-blue">
+          <img src="https://codeforces.org/s/0/favicon-32x32.png" alt="CF"
+               onerror="this.parentElement.innerHTML='<span class=c-blue style=font-weight:800>CF</span>'" />
+        </div>
+        <div class="plat-body">
+          <div class="plat-name">Codeforces <span class="badge-pop">⭐ La más popular</span></div>
+          <div class="plat-desc">La plataforma más activa del mundo. Rondas Div. 1–4, rondas educativas y más de 8,000 problemas archivados. Rating con colores de Gris a Legendario.</div>
+          <div class="pills">
+            <span class="pill p-blue">🗓 Div. 2/3: jue o sáb ~7–9 AM</span>
+            <span class="pill p-mauve">🗓 Edu: miércoles ~7 AM</span>
+            <span class="pill p-peach">🗓 Div. 1: varía, generalmente fines de semana</span>
+          </div>
+          <a class="plat-link" href="http://codeforces.com/" target="_blank">codeforces.com ↗</a>
+        </div>
+      </div>
+
+      <!-- AtCoder -->
+      <div class="platform-card">
+        <div class="plat-logo" style="background:#404040">
+          <img src="https://img.atcoder.jp/assets/favicon.png" alt="AC"
+               onerror="this.parentElement.innerHTML='<span style=color:#fff;font-weight:800>AC</span>'" />
+        </div>
+        <div class="plat-body">
+          <div class="plat-name">AtCoder</div>
+          <div class="plat-desc">Plataforma japonesa con problemas de alta calidad y originalidad. Sus concursos ABC, ARC y AGC son de los más seguidos del mundo. Muy buena para mejorar la parte matemática.</div>
+          <div class="pills">
+            <span class="pill p-green">🗓 ABC: sábados ~6 AM</span>
+            <span class="pill p-blue">🗓 ARC: sáb o dom ~6 AM</span>
+            <span class="pill p-mauve">🗓 AGC: domingos ocasionales ~6 AM</span>
+          </div>
+          <a class="plat-link" href="https://atcoder.jp/" target="_blank">atcoder.jp ↗</a>
+        </div>
+      </div>
+
+      <!-- CSES -->
+      <div class="platform-card">
+        <div class="plat-logo i-teal">
+          <img src="https://cses.fi/favicon.ico" alt="CSES"
+               onerror="this.parentElement.innerHTML='<span class=c-teal style=font-weight:800;font-size:.8rem>CS</span>'" />
+        </div>
+        <div class="plat-body">
+          <div class="plat-name">CSES Problem Set</div>
+          <div class="plat-desc">Colección de ~300 problemas clásicos organizados por tema. No tiene concursos frecuentes, pero es excelente para entrenamiento estructurado y dominar los fundamentos. Muy recomendada para empezar.</div>
+          <div class="pills">
+            <span class="pill p-neutral">📚 Práctica continua, sin concursos fijos</span>
+          </div>
+          <a class="plat-link" href="https://cses.fi/problemset/" target="_blank">cses.fi ↗</a>
+        </div>
+      </div>
+
+      <!-- UVa -->
+      <div class="platform-card">
+        <div class="plat-logo" style="background:#2a2a4c">
+          <img src="https://onlinejudge.org/favicon.ico" alt="UVa"
+               onerror="this.parentElement.innerHTML='<span class=c-blue style=font-weight:800;font-size:.8rem>UV</span>'" />
+        </div>
+        <div class="plat-body">
+          <div class="plat-name">UVa Online Judge</div>
+          <div class="plat-desc">Archivo histórico con miles de problemas del ICPC de Norteamérica y Latinoamérica. La interfaz es algo antigua, pero los problemas son reales de competencia. El libro CP4 los referencia directamente.</div>
+          <div class="pills">
+            <span class="pill p-neutral">📚 Archivo de problemas ICPC</span>
+          </div>
+          <a class="plat-link" href="https://uva.onlinejudge.org/" target="_blank">onlinejudge.org ↗</a>
+        </div>
+      </div>
+
+      <!-- LeetCode -->
+      <div class="platform-card">
+        <div class="plat-logo i-yellow">
+          <img src="https://leetcode.com/favicon.ico" alt="LC"
+               onerror="this.parentElement.innerHTML='<span style=font-size:1.2rem>🟨</span>'" />
+        </div>
+        <div class="plat-body">
+          <div class="plat-name">LeetCode</div>
+          <div class="plat-desc">Genial para practicar algoritmos y prepararse para entrevistas técnicas. Organiza problemas por tema, dificultad y empresa. Sus concursos semanales son accesibles para todos los niveles.</div>
+          <div class="pills">
+            <span class="pill p-yellow">🗓 Weekly Contest: domingos ~4:30 AM</span>
+            <span class="pill p-peach">🗓 Biweekly: sábados alternos ~8:30 AM</span>
+          </div>
+          <a class="plat-link" href="https://leetcode.com/" target="_blank">leetcode.com ↗</a>
+        </div>
+      </div>
+
+      <!-- omegaUp -->
+      <div class="platform-card">
+        <div class="plat-logo i-mauve">
+          <img src="https://omegaup.com/favicon.ico" alt="ωU"
+               onerror="this.parentElement.innerHTML='<span class=c-mauve style=font-weight:800;font-size:1.2rem>ω</span>'" />
+        </div>
+        <div class="plat-body">
+          <div class="plat-name">omegaUp <span class="lang-tag c-mauve">(en español)</span></div>
+          <div class="plat-desc">Plataforma latinoamericana en español con problemas, concursos y cursos. Es la principal plataforma de la comunidad hispanohablante de CP y tiene mucho contenido orientado a olimpiadas de la región.</div>
+          <div class="pills">
+            <span class="pill p-mauve">🗓 Concursos frecuentes (varía)</span>
+          </div>
+          <a class="plat-link" href="https://omegaup.com/" target="_blank">omegaup.com ↗</a>
+        </div>
+      </div>
+
+      <!-- CodeChef -->
+      <div class="platform-card">
+        <div class="plat-logo i-peach">
+          <img src="https://www.codechef.com/favicon.ico" alt="CC"
+               onerror="this.parentElement.innerHTML='<span style=font-size:1.1rem>🍴</span>'" />
+        </div>
+        <div class="plat-body">
+          <div class="plat-name">CodeChef</div>
+          <div class="plat-desc">Buena variedad de concursos: los Starters semanales son cortos y accesibles, y el Long Challenge mensual te da hasta 10 días para resolver. Buena opción para practicar problemas de nivel medio.</div>
+          <div class="pills">
+            <span class="pill p-peach">🗓 Starters: miércoles ~9:30 AM</span>
+            <span class="pill p-neutral">🗓 Long Challenge: primer martes del mes</span>
+          </div>
+          <a class="plat-link" href="https://www.codechef.com/" target="_blank">codechef.com ↗</a>
+        </div>
+      </div>
+
+      <!-- Kattis -->
+      <div class="platform-card">
+        <div class="plat-logo i-blue">
+          <img src="https://open.kattis.com/favicon.ico" alt="KT"
+               onerror="this.parentElement.innerHTML='<span class=c-blue style=font-weight:800;font-size:.8rem>KT</span>'" />
+        </div>
+        <div class="plat-body">
+          <div class="plat-name">Kattis</div>
+          <div class="plat-desc">Muy usada por universidades para entrenamientos y concursos internos. Es el juez oficial de muchas regionales del ICPC en Norteamérica y Europa. Los problemas se puntúan por dificultad.</div>
+          <div class="pills">
+            <span class="pill p-blue">🗓 Concursos universitarios (varía)</span>
+          </div>
+          <a class="plat-link" href="https://open.kattis.com/" target="_blank">open.kattis.com ↗</a>
+        </div>
+      </div>
+
+      <!-- GUINI Juez -->
+      <div class="platform-card">
+        <div class="plat-logo i-green">
+          <img src="https://guinijuez.org/favicon.ico" alt="GJ"
+               onerror="this.parentElement.innerHTML='<span class=c-green style=font-weight:800;font-size:.8rem>GJ</span>'" />
+        </div>
+        <div class="plat-body">
+          <div class="plat-name">GUINI Juez</div>
+          <div class="plat-desc">Juez en línea con problemas orientados a concursos nacionales de la región. Buena opción para practicar con material más cercano al contexto latinoamericano.</div>
+          <div class="pills">
+            <span class="pill p-green">🗓 Concursos regionales (varía)</span>
+          </div>
+          <a class="plat-link" href="https://guinijuez.org/" target="_blank">guinijuez.org ↗</a>
+        </div>
+      </div>
+
+      <!-- HackerRank -->
+      <div class="platform-card">
+        <div class="plat-logo i-green">
+          <img src="https://www.hackerrank.com/favicon.ico" alt="HR"
+               onerror="this.parentElement.innerHTML='<span style=font-size:1.1rem>🟩</span>'" />
+        </div>
+        <div class="plat-body">
+          <div class="plat-name">HackerRank</div>
+          <div class="plat-desc">Muy accesible para principiantes. Tiene tracks de práctica por tema y concursos mensuales. También la usan mucho empresas en sus procesos de selección, así que es útil en más de un sentido.</div>
+          <div class="pills">
+            <span class="pill p-green">🗓 Concursos mensuales (varía)</span>
+          </div>
+          <a class="plat-link" href="https://www.hackerrank.com/" target="_blank">hackerrank.com ↗</a>
+        </div>
+      </div>
+
+      <!-- Project Euler -->
+      <div class="platform-card">
+        <div class="plat-logo i-yellow">
+          <img src="https://projecteuler.net/favicon.ico" alt="PE"
+               onerror="this.parentElement.innerHTML='<span style=font-size:1.1rem>🔢</span>'" />
+        </div>
+        <div class="plat-body">
+          <div class="plat-name">Project Euler</div>
+          <div class="plat-desc">Colección de problemas matemáticos-computacionales. No es un juez de CP tradicional — los problemas se resuelven de forma independiente y generan mucho pensamiento matemático creativo. Muy recomendado para fortalecer matemáticas.</div>
+          <div class="pills">
+            <span class="pill p-neutral">📚 Archivo de problemas matemáticos</span>
+          </div>
+          <a class="plat-link" href="https://projecteuler.net/archives" target="_blank">projecteuler.net ↗</a>
+        </div>
+      </div>
+
+      <!-- Acepta el reto -->
+      <div class="platform-card">
+        <div class="plat-logo i-peach">
+          <img src="https://aceptaelreto.com/favicon.ico" alt="AER"
+               onerror="this.parentElement.innerHTML='<span style=font-size:1.1rem>🏆</span>'" />
+        </div>
+        <div class="plat-body">
+          <div class="plat-name">¡Acepta el reto! <span class="lang-tag c-peach">(en español)</span></div>
+          <div class="plat-desc">Juez en línea en español con problemas organizados por categorías y dificultad. Perfecto para practicar con enunciados en español y con un enfoque accesible para quienes están comenzando.</div>
+          <div class="pills">
+            <span class="pill p-peach">📚 Práctica continua</span>
+          </div>
+          <a class="plat-link" href="https://aceptaelreto.com/" target="_blank">aceptaelreto.com ↗</a>
+        </div>
+      </div>
+
+      <!-- OIA Juez -->
+      <div class="platform-card">
+        <div class="plat-logo i-mauve">
+          <img src="https://juez.oia.unsam.edu.ar/favicon.ico" alt="OIA"
+               onerror="this.parentElement.innerHTML='<span class=c-mauve style=font-weight:800;font-size:.75rem>OIA</span>'" />
+        </div>
+        <div class="plat-body">
+          <div class="plat-name">OIA Juez <span class="lang-tag c-mauve">(en español)</span></div>
+          <div class="plat-desc">Juez oficial de la Olimpiada Iberoamericana de Informática. Tiene los problemas de ediciones anteriores de la OIA y material de preparación en español orientado a olimpiadas de la región.</div>
+          <div class="pills">
+            <span class="pill p-mauve">📚 Archivo OIA + práctica</span>
+          </div>
+          <a class="plat-link" href="https://juez.oia.unsam.edu.ar/" target="_blank">juez.oia.unsam.edu.ar ↗</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SETS DE ENTRENAMIENTO -->
+  <div id="sets" class="page">
+    <div class="section-header">
+      <div class="section-tag">Práctica estructurada</div>
+      <h2 class="section-title">Sets de Entrenamiento</h2>
+      <p class="section-subtitle">Listas de problemas y hojas de entrenamiento para practicar de forma más organizada y con dirección clara.</p>
+    </div>
+    <div class="tool-grid">
+
+      <div class="tool-card">
+        <div class="tc-icon">📋</div>
+        <div class="tc-title">CP-31 Sheet</div>
+        <div class="tc-desc">Hoja de problemas de TLE Eliminators. Cubre 31 temas fundamentales de CP con problemas de dificultad progresiva. Muy popular para tener un plan de entrenamiento claro.</div>
+        <a class="tc-link" href="https://www.tle-eliminators.com/cp-sheet" target="_blank">tle-eliminators.com/cp-sheet ↗</a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tc-icon">🥾</div>
+        <div class="tc-title">Boot Camp for Beginners — AtCoder</div>
+        <div class="tc-desc">Set de entrenamiento en AtCoder Problems para quienes empiezan. Organiza problemas de AtCoder en un camino progresivo. Ideal si ya te aventuraste con los ABC y quieres ir más lejos.</div>
+        <a class="tc-link" href="https://kenkoooo.com/atcoder/#/training" target="_blank">kenkoooo.com/atcoder ↗</a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tc-icon">💯</div>
+        <div class="tc-title">100 Easy Problems by Errichto — GYM CF</div>
+        <div class="tc-desc">Lista de 100 problemas accesibles pero formativos, organizada por Errichto en un gym de Codeforces. Buen punto de partida para consolidar habilidades básicas con problemas de calidad.</div>
+        <a class="tc-link" href="https://codeforces.com/blog/entry/97058" target="_blank">Ver en Codeforces ↗</a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tc-icon">🍴</div>
+        <div class="tc-title">Práctica por temas — CodeChef</div>
+        <div class="tc-desc">Sección de práctica de CodeChef organizada por lenguajes y temas algorítmicos. Útil para enfocarte en un área específica y resolver varios problemas de ese tipo de forma seguida.</div>
+        <a class="tc-link" href="https://www.codechef.com/practice#programming-languages" target="_blank">codechef.com/practice ↗</a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tc-icon">🎯</div>
+        <div class="tc-title">Topic Streams by Shayan — Codeforces</div>
+        <div class="tc-desc">Grupo de Codeforces con concursos organizados por tema (grafos, DP, strings, etc.). Practicar un tema específico en formato de concurso ayuda a medir el tiempo y trabajar bajo presión.</div>
+        <a class="tc-link" href="https://codeforces.com/group/yeVhAfeK6s/contests" target="_blank">Ver grupo en CF ↗</a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tc-icon">🇲🇽</div>
+        <div class="tc-title">Lista de problemas — OMI</div>
+        <div class="tc-desc">Archivo de problemas de ediciones anteriores de la Olimpiada Mexicana de Informática. Si quieres prepararte para la OMI o practicar con material de olimpiada real en español, empieza aquí.</div>
+        <a class="tc-link" href="https://www.olimpiadadeinformatica.org.mx/Resultados/Problemas" target="_blank">olimpiadadeinformatica.org.mx ↗</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- HERRAMIENTAS -->
+  <div id="herramientas" class="page">
+    <div class="section-header">
+      <div class="section-tag">Utilidades</div>
+      <h2 class="section-title">Herramientas Adicionales</h2>
+      <p class="section-subtitle">Cositas que hacen la vida más fácil: calendarios de concursos, análisis de progreso, depuración y más.</p>
+    </div>
+    <div class="tool-grid">
+
+      <div class="tool-card">
+        <div class="tc-icon">📊</div>
+        <div class="tc-title">CF Analytics</div>
+        <div class="tc-desc">Herramienta para analizar tu progreso en Codeforces: qué tipos de problemas resuelves, en qué tags eres más débil, estadísticas de rating, etc. Muy útil para saber dónde mejorar.</div>
+        <a class="tc-link" href="https://github.com/ApoorvaRajBhadani/cf-analytics" target="_blank">Ver en GitHub ↗</a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tc-icon">🔍</div>
+        <div class="tc-title">uHunt</div>
+        <div class="tc-desc">Para rastrear tu progreso en UVa Online Judge: qué problemas has resuelto, rankings y estadísticas. Práctica si usas UVa para entrenarte con problemas del ICPC.</div>
+        <a class="tc-link" href="https://uhunt.onlinejudge.org/" target="_blank">uhunt.onlinejudge.org ↗</a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tc-icon">🐛</div>
+        <div class="tc-title">uDebug</div>
+        <div class="tc-desc">Para verificar casos de prueba de problemas de UVa y otros jueces. Si tu solución falla pero no sabes por qué, aquí puedes buscar casos adicionales para depurar más fácil.</div>
+        <a class="tc-link" href="https://www.udebug.com/" target="_blank">udebug.com ↗</a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tc-icon">📅</div>
+        <div class="tc-title">clist.by</div>
+        <div class="tc-desc">Calendario centralizado de concursos de todas las plataformas (Codeforces, AtCoder, LeetCode...). Muy útil para no perderte ninguna ronda y planificar tu semana de entrenamiento.</div>
+        <a class="tc-link" href="https://clist.by/" target="_blank">clist.by ↗</a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tc-icon">🕸️</div>
+        <div class="tc-title">Editor de Gráficas — CS Academy</div>
+        <div class="tc-desc">Editor visual para crear y manipular grafos de forma interactiva. Perfecto para entender un problema de grafos, probar casos manualmente o explicarle algo a alguien.</div>
+        <a class="tc-link" href="https://csacademy.com/app/graph_editor/" target="_blank">csacademy.com ↗</a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tc-icon">📰</div>
+        <div class="tc-title">CP Digest</div>
+        <div class="tc-desc">Resumen de lo que pasa en el mundo de la programación competitiva: concursos recientes, editoriales, recursos nuevos y más. Buena forma de mantenerse al tanto de la comunidad.</div>
+        <a class="tc-link" href="https://www.tle-eliminators.com/cp-digest/home/introducing-cp-digest" target="_blank">tle-eliminators.com/cp-digest ↗</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- EDITORES -->
+  <div id="editores" class="page">
+    <div class="section-header">
+      <div class="section-tag">Desarrollo</div>
+      <h2 class="section-title">Editores y Compiladores en Línea</h2>
+      <p class="section-subtitle">Para cuando no tienes tu entorno configurado o simplemente quieres probar algo rápido sin instalar nada.</p>
+    </div>
+    <div class="tool-grid">
+
+      <div class="tool-card">
+        <div class="tc-icon">⌨️</div>
+        <div class="tc-title">USACO IDE</div>
+        <div class="tc-desc">IDE en línea del equipo de USACO Guide. Soporta C++, Java y Python con soporte para E/S de archivos (útil para USACO). Limpio, rápido y sin distracciones.</div>
+        <a class="tc-link" href="https://ide.usaco.guide/" target="_blank">ide.usaco.guide ↗</a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tc-icon">🐛</div>
+        <div class="tc-title">Online GDB</div>
+        <div class="tc-desc">Editor y depurador en línea con soporte para C, C++, Python, Java y más. Puedes usar el debugger paso a paso — algo que pocos compiladores en línea ofrecen.</div>
+        <a class="tc-link" href="https://www.onlinegdb.com/" target="_blank">onlinegdb.com ↗</a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tc-icon">🍴</div>
+        <div class="tc-title">CodeChef IDE</div>
+        <div class="tc-desc">Compilador en línea de CodeChef con soporte para Python, C++, C, Java, Rust y más. Interfaz limpia y directa para probar código rápidamente sin configurar nada.</div>
+        <a class="tc-link" href="https://www.codechef.com/ide" target="_blank">codechef.com/ide ↗</a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tc-icon">💻</div>
+        <div class="tc-title">CS Academy Workspace</div>
+        <div class="tc-desc">Workspace de CS Academy con editor de código integrado. Soporta C++ y otros lenguajes con un entorno limpio y sin publicidad. Buena opción si quieres algo minimalista.</div>
+        <a class="tc-link" href="https://csacademy.com/workspace/" target="_blank">csacademy.com/workspace ↗</a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tc-icon">🔧</div>
+        <div class="tc-title">OneCompiler</div>
+        <div class="tc-desc">Compilador en línea con soporte para más de 60 lenguajes. Muy sencillo de usar y con opción de compartir código con un link. Práctico para colaborar o guardar snippets rápido.</div>
+        <a class="tc-link" href="https://onecompiler.com/" target="_blank">onecompiler.com ↗</a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tc-icon">💡</div>
+        <div class="tc-title">Ideone</div>
+        <div class="tc-desc">Compilador en línea clásico con soporte para muchos lenguajes. Permite compartir código y ver el resultado. Lleva muchos años siendo un recurso confiable para probar soluciones rápidamente.</div>
+        <a class="tc-link" href="https://ideone.com/" target="_blank">ideone.com ↗</a>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  Hecho con <span>♥</span> para compartir y crecer juntos · Tema <span>Catppuccin Mocha</span>
+</footer>
+
+<script>
+  const pageIds = ['inicio','material','plataformas','sets','herramientas','editores'];
+  const btns    = document.querySelectorAll('.nav-btn');
+
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    btns.forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btns[pageIds.indexOf(id)].classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
